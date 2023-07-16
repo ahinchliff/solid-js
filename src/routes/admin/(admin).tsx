@@ -1,5 +1,3 @@
-import { For } from 'solid-js';
-import { useRouteData } from 'solid-start';
 import { createServerData$, redirect } from 'solid-start/server';
 import CustomerSearch from '~/components/CustomerSearch';
 import { isLoggedIn } from '~/lib/session';
@@ -18,7 +16,7 @@ export default () => {
   // const customers = useRouteData<typeof routeData>();
 
   return (
-    <>
+    <div>
       <CustomerSearch />
       {/* <table class="min-w-full divide-y divide-gray-300">
         <thead>
@@ -61,6 +59,6 @@ export default () => {
           </For>
         </tbody>
       </table> */}
-    </>
+    </div>
   );
 };

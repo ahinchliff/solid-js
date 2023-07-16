@@ -1,28 +1,6 @@
 import { APIEvent } from 'solid-start';
-import Stripe from 'stripe';
+import { stripe } from '~/lib/payments';
 import { db } from '~/lib/data';
-
-const stripe = new Stripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY, {
-  apiVersion: '2022-11-15',
-});
-
-const YOUR_DOMAIN = 'http://localhost:3000';
-
-export const GET = async () => {
-  const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price: 'price_1NTJGhAvwaanSrxKvElV38fa',
-        quantity: 1,
-      },
-    ],
-    mode: 'payment',
-    success_url: `${YOUR_DOMAIN}/success`,
-    cancel_url: `${YOUR_DOMAIN}`,
-  });
-
-  return Response.redirect(session.url as string);
-};
 
 type Success = {
   id: string;

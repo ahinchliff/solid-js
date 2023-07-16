@@ -2,6 +2,7 @@ import { A } from '@solidjs/router';
 import { For, Show } from 'solid-js';
 import { createServerAction$, redirect } from 'solid-start/server';
 import { db } from '~/lib/data';
+import { formatFullName } from '~/lib/format';
 import { isLoggedIn } from '~/lib/session';
 
 export default () => {
@@ -51,12 +52,7 @@ export default () => {
 
   return (
     <div>
-      <label
-        for="email"
-        class="block text-sm font-medium leading-6 text-gray-900"
-      >
-        Search customers
-      </label>
+      <h1 class="text-2xl">Customers</h1>
       <div class="mt-2 flex rounded-md shadow-sm">
         <div class="relative flex flex-grow items-stretch focus-within:z-10">
           <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -79,7 +75,9 @@ export default () => {
         </div>
       </div>
       <Show when={customers.pending}>
-        <p>Loading...</p>
+        <div class="py-2">
+          <p>Loading...</p>
+        </div>
       </Show>
       <Show when={customers.result}>
         <table class="min-w-full divide-y divide-gray-300">
@@ -87,10 +85,10 @@ export default () => {
             <For each={customers.result}>
               {(customer) => (
                 <tr>
-                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
+                  <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
                     <A href={`/admin/customer/${customer.id}`}>
                       <span class="text-indigo-600 underline">
-                        {customer.firstName} {customer.lastName}
+                        {formatFullName(customer)}
                       </span>
                     </A>
                   </td>

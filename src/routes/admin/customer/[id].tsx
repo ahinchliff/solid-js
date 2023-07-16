@@ -88,23 +88,26 @@ export default () => {
       {(data) => {
         return (
           <div>
-            <h1>{formatFullName(data().customer)}</h1>
+            <h1 class="text-2xl">{formatFullName(data().customer)}</h1>
             <h2>{data().customer.email}</h2>
-            <p>Credits: {data().credits}</p>
-            <Form>
-              <input
-                name="customerId"
-                type="hidden"
-                value={data().customer.id}
-              />
-              <input
-                name="credit"
-                value={credit()}
-                onInput={(e) => setCredit(e.target.value)}
-                type="number"
-                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </Form>
+            <div class="pt-4">
+              <p>Credits: {data().credits}</p>
+              <Form>
+                <input
+                  name="customerId"
+                  type="hidden"
+                  value={data().customer.id}
+                />
+                <input
+                  name="credit"
+                  value={credit()}
+                  onInput={(e) => setCredit(e.target.value)}
+                  type="number"
+                  placeholder="Reduce credits by"
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </Form>
+            </div>
           </div>
         );
       }}
