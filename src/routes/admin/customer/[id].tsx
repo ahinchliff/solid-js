@@ -66,6 +66,31 @@ export default () => {
       const customerId = Number(formData.get('customerId'));
       const credit = Number(formData.get('credit'));
 
+      const purchases = await db.purchase.findMany({
+        where: {
+          customerId: customerId,
+        },
+      });
+
+      const spends = await db.spend.findMany({
+        where: {
+          customerId: customerId,
+        },
+      });
+
+      const creditsPurchased = purchases.reduce(
+        (sum, purchase) => sum + purchase.credit,
+        0
+      );
+
+      const creditsSpent = spends.reduce((sum, spend) => sum + spend.credit, 0);
+
+      const credits = creditsPurchased - creditsSpent;
+
+      if (credits - credit < 0) {
+        return true;
+      }
+
       await db.spend.create({
         data: {
           customerId,
