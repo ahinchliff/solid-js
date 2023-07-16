@@ -76,7 +76,7 @@ export default () => {
       <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
           <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">
-            Awsome Brewery
+            Awesome Brewery
           </h2>
           <p class="mb-8 font-light  sm:text-xl text-gray-400">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a
