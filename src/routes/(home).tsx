@@ -51,7 +51,7 @@ export default () => {
   const [searchParams] = useSearchParams();
 
   return (
-    <div class="bg-gray-900 h-screen">
+    <div class="bg-gray-900 min-h-screen">
       <Show when={searchParams.success === 'true'}>
         <div
           class="flex items-center p-4 mb-4 text-sm rounded-lg bg-gray-800 text-green-400 border-green-800"
